@@ -11,16 +11,32 @@ int main() {
     if (broj < 0) {
         printf("1");
         broj = -broj;
+
+        for (i=7; i>0; --i) { 
+            bitovi[i] = broj % 2;
+            broj = broj / 2;
+        }
+
+        for (i = 0; i < 8; ++i) {
+            bitovi[i] = (bitovi[i] == 0) ? 1 : 0;
+        }
+        for (i = 0; i < 8; ++i) {
+            if (bitovi[i] == 0) {
+                bitovi[i] = 1;
+            } else {
+                bitovi[i] = 0;
+            }
+        }
     } else {
         printf("0");
+
+        for (i=7; i>=0; --i) {
+            bitovi[i] = broj % 2;
+            broj = broj / 2;
+        }
     }
 
-    for (i = 0; i < 8; ++i) {
-        bitovi[i] = broj % 2;
-        broj = broj / 2;
-    }
-
-    for (i = 7; i >= 0; --i) {
+    for (i=0; i<8; ++i) {
         printf("%d", bitovi[i]);
     }
 
