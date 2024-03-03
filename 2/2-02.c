@@ -5,14 +5,14 @@ typedef struct {
     unsigned short dan;
     unsigned short mjesec;
     unsigned short godina;
-}datum;
+}DATUM;
 
 struct podaci{
     char ime[20];
     char prezime[20];
     int maticniBroj;
     float prosjek;
-    datum datumRodjenja;
+    DATUM datumRodjenja;
 }student[40];
 
 int main() {
