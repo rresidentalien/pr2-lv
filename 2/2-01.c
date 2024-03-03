@@ -3,10 +3,10 @@
 typedef struct {
     float realni;
     float imaginarni;
-} kompleksni;
+} KOMPLEKSNI;
 
 int main() {
-    kompleksni broj1, broj2, zbroj, razlika;
+    KOMPLEKSNI broj1, broj2, zbroj, razlika;
 
     printf("Unesi prvi kompleksni broj: ");
     scanf("%f %f", &broj1.realni, &broj1.imaginarni);
