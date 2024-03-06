@@ -23,10 +23,10 @@ int main() {
 
     for (i=0; i<n; ++i) {
         printf("Unesite ime:");
-        fgets(student[i].ime, sizeof(student[i].ime), stdin);
+        scanf(" %s", student[i].ime);
 
         printf("Unesite prezime:");
-        fgets(student[i].prezime, sizeof(student[i].prezime), stdin);
+        scanf(" %s", student[i].prezime);
 
         printf("Unesite maticni broj:");
         scanf("%d", &student[i].maticniBroj);
