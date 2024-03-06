@@ -1,18 +1,18 @@
 #include <stdio.h>
 #include <string.h>
 
-typedef struct {
+typedef struct{
     unsigned short dan;
     unsigned short mjesec;
     unsigned short godina;
 }DATUM;
 
-struct podaci{
+ struct podaci{
     char ime[20];
     char prezime[20];
     int maticniBroj;
     float prosjek;
-    DATUM datumRodjenja;
+    DATUM datumRodjenja; //= struct datum datumRodjenja;
 }student[40];
 
 int main() {
@@ -23,10 +23,10 @@ int main() {
 
     for (i=0; i<n; ++i) {
         printf("Unesite ime:");
-        scanf("%s", student[i].ime);
+        fgets(student[i].ime, sizeof(student[i].ime), stdin);
 
         printf("Unesite prezime:");
-        scanf("%s", student[i].prezime);
+        fgets(student[i].prezime, sizeof(student[i].prezime), stdin);
 
         printf("Unesite maticni broj:");
         scanf("%d", &student[i].maticniBroj);
