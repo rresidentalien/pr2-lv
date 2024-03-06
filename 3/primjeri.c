@@ -17,3 +17,4 @@ int i;
     printf("%3d ", pok[i][0]);
     printf("%3d", *(*(pok + i) + 0));
     }*/
+}
