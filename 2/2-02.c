@@ -1,18 +1,18 @@
 #include <stdio.h>
 #include <string.h>
 
-typedef struct {
+typedef struct{
     unsigned short dan;
     unsigned short mjesec;
     unsigned short godina;
 }DATUM;
 
-struct podaci{
+ struct podaci{
     char ime[20];
     char prezime[20];
     int maticniBroj;
     float prosjek;
-    DATUM datumRodjenja;
+    DATUM datumRodjenja; //= struct datum datumRodjenja;
 }student[40];
 
 int main() {
