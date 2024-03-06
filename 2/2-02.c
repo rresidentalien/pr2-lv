@@ -18,7 +18,6 @@ typedef struct{
 int main() {
     int n, i;
     int max = 0;
-    char ime[20], prezime[20];
     scanf("%d", &n);
 
     for (i=0; i<n; ++i) {
@@ -38,14 +37,12 @@ int main() {
         scanf("%hu.%hu.%hu.", &student[i].datumRodjenja.dan, &student[i].datumRodjenja.mjesec, &student[i].datumRodjenja.godina);
 
         if (student[i].prosjek > max) {
-            max = student[i].prosjek;
-            strcpy(ime, student[i].ime);
-            strcpy(prezime, student[i].prezime);
+            max = i;
         }
     }
 
     printf("REZULTATI:\n");
-    printf("%s %s", ime, prezime);
+    printf("%s %s", student[max].ime, student[max].prezime);
 
     return 0;
 }
