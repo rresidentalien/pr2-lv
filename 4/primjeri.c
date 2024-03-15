@@ -138,6 +138,62 @@ int pr4() {
 
 
 
+float len3d(float x, float y, float z) {
+        return sqrt( x*x + y*y + z*z);
+}
+int pr5() {
+    struct tocka {
+        float x;
+        float y;
+        float z;
+    };
+    struct trokut {
+        struct tocka *t1;
+        struct tocka *t2;
+        struct tocka *t3;
+    };
+
+    struct tocka tocke[100];
+    struct trokut trokuti[100];
+    struct trokut *max;
+    int i;
+    int ind1, ind2, ind3;
+    float Dtrenutni=0, Dmax=0;
+
+    for (i = 0; i < N; i++) { //upis 10 tocaka u polje tocke
+        printf("Upisi x, y i z za %d tocku: ", i+1);
+        scanf("%f%f%f", &tocke[i].x, &tocke[i].y, &tocke[i].z);
+    }
+
+    for (i = 0; i < N; i++) { //upis 10 trokuta definiranih tim tockama u polje trokuti
+        printf("Upisi indexe tocaka za %d trokut: ", i+1);
+        scanf("%d%d%d", &ind1, &ind2, &ind3);
+        trokuti[i].t1 = &tocke[ind1];
+        trokuti[i].t2 = &tocke[ind2];
+        trokuti[i].t3 = &tocke[ind3];
+    }
+
+    for (i = 0; i < N; i++) {
+        Dtrenutni = 0;
+        Dtrenutni += len3d(trokuti[i].t1->x, trokuti[i].t1->y, trokuti[i].t1->z);
+        Dtrenutni += len3d(trokuti[i].t2->x, trokuti[i].t2->y, trokuti[i].t2->z);
+        Dtrenutni += len3d(trokuti[i].t3->x, trokuti[i].t3->y, trokuti[i].t3->z);
+        Dtrenutni /= 3;
+        if (Dtrenutni > Dmax) {
+            Dmax = Dtrenutni;
+            max = &trokuti[i];
+        }
+    }   
+
+    printf("Najudaljeniji trokut je udaljen %.2f od ishodišta,\n", Dmax);
+    printf("a njegove koordinate su:\n");
+    printf("(%.2f, %.2f, %.2f)\n", max->t1->x, max->t1->y, max->t1->z);
+    printf("(%.2f, %.2f, %.2f)\n", max->t2->x, max->t2->y, max->t2->z);
+    printf("(%.2f, %.2f, %.2f)\n", max->t3->x, max->t3->y, max->t3->z);
+}
+
+
+
 int main() {
     printf("\nPrvi primjer - pokazivac na strukturu");
     pr1();
