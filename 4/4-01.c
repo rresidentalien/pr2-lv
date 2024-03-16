@@ -31,7 +31,6 @@ int main() {
 
     struct tocka tocke[n];
     struct trokut trokuti[m];
-    float opseg = 0;
     float max = 0;
 
     for (i = 0; i < n; ++i) {
@@ -45,8 +44,9 @@ int main() {
     }
 
     for (i = 0; i < m; ++i) {
-        if (izracunOpsega(trokuti[i]) > max) {
-            max = izracunOpsega(trokuti[i]);
+        float opseg = izracunOpsega(trokuti[i]);
+        if (opseg > max) {
+                max = opseg;
         }
     }
 
