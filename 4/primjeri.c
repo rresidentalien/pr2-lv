@@ -139,26 +139,26 @@ int pr4() {
 
 
 float len3d(float x, float y, float z) {
-        return sqrt( x*x + y*y + z*z);
+        return sqrt( x*x + y*y + z*z); //formula za udaljenost tocke od ishodista potrebna za iduci zadatak
 }
 int pr5() {
-    struct tocka {
+    struct tocka { //struktura tocka s koordinatama x,y,z
         float x;
         float y;
         float z;
     };
-    struct trokut {
+    struct trokut { //struktura trokut s pokazivacima na tri tocke
         struct tocka *t1;
         struct tocka *t2;
         struct tocka *t3;
     };
 
-    struct tocka tocke[100];
-    struct trokut trokuti[100];
-    struct trokut *max;
+    struct tocka tocke[100]; //polje od 100 tocaka
+    struct trokut trokuti[100]; //polje od 100 trokuta
+    struct trokut *max; //pokazivac na strukturu trokut, koristit ce se za usmjeravanje na najudaljeniji trokut
     int i;
-    int ind1, ind2, ind3;
-    float Dtrenutni=0, Dmax=0;
+    int ind1, ind2, ind3; //indeksi tocaka koje definiraju trokut
+    float Dtrenutni=0, Dmax=0; //Dmax = najveca udaljenost trokuta od ishodista, Dtrenutni = trenutna udaljenost trokuta od ishodista
 
     for (i = 0; i < N; i++) { //upis 10 tocaka u polje tocke
         printf("Upisi x, y i z za %d tocku: ", i+1);
@@ -174,16 +174,16 @@ int pr5() {
     }
 
     for (i = 0; i < N; i++) {
-        Dtrenutni = 0;
-        Dtrenutni += len3d(trokuti[i].t1->x, trokuti[i].t1->y, trokuti[i].t1->z);
-        Dtrenutni += len3d(trokuti[i].t2->x, trokuti[i].t2->y, trokuti[i].t2->z);
+        Dtrenutni = 0; //resetiranje trenutne udaljenosti
+        Dtrenutni += len3d(trokuti[i].t1->x, trokuti[i].t1->y, trokuti[i].t1->z); //poziv funkcije za izracun udaljenosti tocke od ishodista
+        Dtrenutni += len3d(trokuti[i].t2->x, trokuti[i].t2->y, trokuti[i].t2->z); 
         Dtrenutni += len3d(trokuti[i].t3->x, trokuti[i].t3->y, trokuti[i].t3->z);
-        Dtrenutni /= 3;
-        if (Dtrenutni > Dmax) {
-            Dmax = Dtrenutni;
-            max = &trokuti[i];
+        Dtrenutni /= 3; //srednja vrijednost udaljenosti tocka trokuta od ishodista
+        if (Dtrenutni > Dmax) { //ako je trenutna udaljenost veca od najvece dosad
+            Dmax = Dtrenutni; //najveca udaljenost postaje trenutna udaljenost
+            max = &trokuti[i]; //pokazivac max usmjeravamo na trenutni trokut
         }
-    }   
+    }
 
     printf("Najudaljeniji trokut je udaljen %.2f od ishodišta,\n", Dmax);
     printf("a njegove koordinate su:\n");
@@ -206,6 +206,9 @@ int main() {
 
     printf("\nCetvrti primjer - ucitavanje 10 tocaka u 3D prostoru i ispis najvise tocke");
     pr4();
+
+    printf("\nPeti primjer - ucitavanje 10 tocaka i 10 trokuta u 3D prostoru i ispis najudaljenijeg trokuta");
+    pr5();
 
     return 0;
 }
