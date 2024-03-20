@@ -1,26 +1,26 @@
 #include <stdio.h>
-#include <math.h>
+#include <math.h> //za sqrt i pow
 
 typedef struct tocka {
     float x;
     float y;
     float z;
-} Tocka;
+} TOCKA;
 
-int inputData(Tocka *p) {
+int inputData(TOCKA *p) { //funkcija prima pokazivac tipa tocka
     int i, n;
-    printf("Upisi broj tocaka: ");
+    printf("Upiši broj točaka: ");
     scanf("%d", &n);
 
     for (i = 0; i < n; i++) {
-        printf("Upisi x, y i z za %d tocku: ", i+1);
+        printf("Upiši x, y i z za %d. točku: ", i+1);
         scanf("%f%f%f", &p[i].x, &p[i].y, &p[i].z);
     }
 
-    return n;
+    return n; //vraca broj unesenih tocaka, sto nam kasnije treba kao argument za findTopTwo
 }
 
-void findTopTwo(Tocka *p, int n, Tocka *max[]) {
+void findTopTwo(TOCKA *p, int n, TOCKA *max[]) { //funkcija koja trazi dvije tocke s najvecom z koordinatom
     int i;
     max[0] = &p[0];
     max[1] = &p[1];
@@ -34,17 +34,17 @@ void findTopTwo(Tocka *p, int n, Tocka *max[]) {
     }
 }
 
-float len3d(Tocka *p1, Tocka *p2) {
-    return sqrt( pow(p2->x - p1->x, 2) + pow(p2->y - p1->y,2) + pow(p2->z - p1->z, 2));
+float len3d(TOCKA *p1, TOCKA *p2) { //izracun udaljenost izmedju dvije tocke
+    return sqrt(pow(p2->x - p1->x, 2) + pow(p2->y - p1->y, 2) + pow(p2->z - p1->z, 2));
 }
 
-void printTocka(Tocka *p) {
+void printTocka(TOCKA *p) { //ispis koordinata jedne tocke
     printf("%.2f, %.2f, %.2f \n", p->x, p->y, p->z);
 }
 
 int main(void) {
-    Tocka tocke[40];
-    Tocka *max[2];
+    TOCKA tocke[40]; //polje od 40 tocki
+    TOCKA *max[2]; //dva pokazivaca na tocku
     int n;
     float D;
 
@@ -53,7 +53,7 @@ int main(void) {
 
     D = len3d(max[0], max[1]);
 
-    printf("Udaljenost najvisih vrhova je %.2f\n", D);
+    printf("Udaljenost najviših vrhova je %.2f\n", D);
     printf("a njihove koordinate su:\n");
     printTocka(max[0]);
     printTocka(max[1]);

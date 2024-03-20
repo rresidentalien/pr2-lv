@@ -6,14 +6,15 @@ typedef struct tocka {
 float x;
 float y;
 float z;
-}Tocka;
+}TOCKA;
+
 typedef struct trokut {
     struct tocka *t1;
     struct tocka *t2;
     struct tocka *t3;
 } Trokut;
 
-void inputData(Tocka *p, Trokut *t, int n) {
+void inputData(TOCKA *p, Trokut *t, int n) {
     int i;
     int ind1, ind2, ind3;
 
@@ -32,7 +33,7 @@ void inputData(Tocka *p, Trokut *t, int n) {
     }
 }
 
-float len3d(Tocka p) {
+float len3d(TOCKA p) {
     return sqrt(p.x * p.x + p.y * p.y + p.z * p.z);
 }
 
@@ -44,7 +45,7 @@ float distTrokut(Trokut t) {
 }
 
 int main(void) {
-    Tocka tocke[100];
+    TOCKA tocke[100];
     Trokut trokuti[100];
     Trokut *max;
     int i;
