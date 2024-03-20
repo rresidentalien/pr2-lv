@@ -52,19 +52,19 @@ int main(void) {
 
     inputData(tocke, trokuti, N);
 
-        for (i = 0; i < N; i++) {
-                Dtrenutni = distTrokut(trokuti[i]);
-                if (Dtrenutni > Dmax) {
-                    Dmax = Dtrenutni;
-                    max = &trokuti[i];
-                }
-            }
+    for (i = 0; i < N; i++) {
+        Dtrenutni = distTrokut(trokuti[i]);
+        if (Dtrenutni > Dmax) {
+            Dmax = Dtrenutni;
+            max = &trokuti[i];
+        }
+    }
 
-            printf("Najudaljeniji trokut je udaljen %.2f od ishodišta,\n", Dmax);
-            printf("a njegove koordinate su:\n");
-            printf("(%.2f, %.2f, %.2f)\n", max->t1->x, max->t1->y, max->t1->z);
-            printf("(%.2f, %.2f, %.2f)\n", max->t2->x, max->t2->y, max->t2->z);
-            printf("(%.2f, %.2f, %.2f)\n", max->t3->x, max->t3->y, max->t3->z);
+    printf("Najudaljeniji trokut je udaljen %.2f od ishodišta,\n", Dmax);
+    printf("a njegove koordinate su:\n");
+    printf("(%.2f, %.2f, %.2f)\n", max->t1->x, max->t1->y, max->t1->z);
+    printf("(%.2f, %.2f, %.2f)\n", max->t2->x, max->t2->y, max->t2->z);
+    printf("(%.2f, %.2f, %.2f)\n", max->t3->x, max->t3->y, max->t3->z);
 
-            return 0;
+    return 0;
 }
