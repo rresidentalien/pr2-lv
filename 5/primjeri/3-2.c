@@ -20,22 +20,23 @@ int inputData(TOCKA *p) { //funkcija prima pokazivac tipa tocka
     return n; //vraca broj unesenih tocaka, sto nam kasnije treba kao argument za findTopTwo
 }
 
-void findTopTwo(TOCKA *p, int n, TOCKA *max[]) { //funkcija koja trazi dvije tocke s najvecom z koordinatom
+//funkcija koja trazi dvije tocke s najvecom z koordinatom
+void findTopTwo(TOCKA *p, int n, TOCKA *max[]) { //kao argument prima polje tocki, broj tocki i dva pokazivaca na tocku u koje cemo upisati max
     int i;
-    max[0] = &p[0];
-    max[1] = &p[1];
-    for (i = 2; i < n; i++) {
-        if(max[0]->z < p[i].z || max[1]->z < p[i].z) {
-            if(max[0]->z < max[1]->z)
-                max[0] = &p[i];
-            else
-                max[1] = &p[i];
+    max[0] = &p[0]; //prvi max je prva tocka
+    max[1] = &p[1]; //drugi max je druga tocka
+    for (i = 2; i < n; i++) { //krecemo od trece tocke
+        if(max[0]->z < p[i].z || max[1]->z < p[i].z) { //ako je z koordinata trenutne tocke veca od z koordinata jedne ili druge max tocke
+            if(max[0]->z < max[1]->z) //ako je prvi max manji od drugog maxa
+                max[0] = &p[i]; //prvi max postaje trenutna tocka
+            else //ako je drugi max manji od prvog maxa
+                max[1] = &p[i]; //drugi max postaje trenutna tocka
         }
     }
 }
 
 float len3d(TOCKA *p1, TOCKA *p2) { //izracun udaljenost izmedju dvije tocke
-    return sqrt(pow(p2->x - p1->x, 2) + pow(p2->y - p1->y, 2) + pow(p2->z - p1->z, 2));
+    return sqrt(pow(p2->x - p1->x, 2) + pow(p2->y - p1->y, 2) + pow(p2->z - p1->z, 2)); //formula za udaljenost izmedju dvije tocke
 }
 
 void printTocka(TOCKA *p) { //ispis koordinata jedne tocke
@@ -48,10 +49,10 @@ int main(void) {
     int n;
     float D;
 
-    n = inputData(tocke);
-    findTopTwo(tocke, n, max);
+    n = inputData(tocke); //vraca broj unesenih tocaka i sprema u n (koji nam treba za findTopTwo)
+    findTopTwo(tocke, n, max); //trazimo dvije tocke s najvecom z koordinatom
 
-    D = len3d(max[0], max[1]);
+    D = len3d(max[0], max[1]); //trazimo udaljenost izmedju najvise dve tocke
 
     printf("Udaljenost najviših vrhova je %.2f\n", D);
     printf("a njihove koordinate su:\n");

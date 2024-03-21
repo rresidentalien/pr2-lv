@@ -3,9 +3,9 @@
 
 #define N 4
 typedef struct tocka {
-float x;
-float y;
-float z;
+    float x;
+    float y;
+    float z;
 }TOCKA;
 
 typedef struct trokut {
@@ -14,18 +14,16 @@ typedef struct trokut {
     struct tocka *t3;
 } Trokut;
 
-void inputData(TOCKA *p, Trokut *t, int n) {
+void inputData(TOCKA *p, Trokut *t, int n) { //upisujemo koordinate tocaka i indekse tocaka za trokute
     int i;
-    int ind1, ind2, ind3;
+    int ind1, ind2, ind3; //uz pomoc ovih varijabli upisivat cemo indekse tocaka u trokute
 
     for (i = 0; i < n; i++) {
         printf("Upisi x, y i z za %d tocku: ", i);
         scanf("%f%f%f", &p[i].x, &p[i].y, &p[i].z);
     }
-    for (i = 0;
-         i < n;
-         i++) {
-        printf("Upisi indexe tocaka za %d trokut: ", i);
+    for (i = 0; i < n; i++) {
+        printf("Upisi indekse tocaka za %d trokut: ", i);
         scanf("%d%d%d", &ind1, &ind2, &ind3);
         t[i].t1 = &p[ind1];
         t[i].t2 = &p[ind2];
@@ -33,29 +31,29 @@ void inputData(TOCKA *p, Trokut *t, int n) {
     }
 }
 
-float len3d(TOCKA p) {
+float len3d(TOCKA p) { //racuna udaljenost tocke od ishodista
     return sqrt(p.x * p.x + p.y * p.y + p.z * p.z);
 }
 
-float distTrokut(Trokut t) {
+float distTrokut(Trokut t) { //racuna udaljenost trokuta od ishodista
     float D = 0.0;
     D = len3d(*t.t1) + len3d(*t.t2) + len3d(*t.t3);
-    D /= 3;
+    D /= 3; //uzima srednju vrijednost udaljenosti svake tocke od ishodista
     return D;
 }
 
 int main(void) {
-    TOCKA tocke[100];
-    Trokut trokuti[100];
-    Trokut *max;
+    TOCKA tocke[100]; //polje od 100 tocaka
+    Trokut trokuti[100]; //polje od 100 trokuta
+    Trokut *max; //pokazivac na trokut
     int i;
     float Dtrenutni = 0, Dmax = 0;
 
     inputData(tocke, trokuti, N);
 
-    for (i = 0; i < N; i++) {
+    for (i = 0; i < N; i++) { //petlja koristi distTrokut za izracun udaljenosti i upisuje u Dtrenutni
         Dtrenutni = distTrokut(trokuti[i]);
-        if (Dtrenutni > Dmax) {
+        if (Dtrenutni > Dmax) { //ako je veci od Dmax, Dmax postaje Dtrenutni
             Dmax = Dtrenutni;
             max = &trokuti[i];
         }
