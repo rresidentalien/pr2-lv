@@ -7,7 +7,7 @@ struct tocka {
 };
 
 //vraca pokazivac na strukturu u kojoj je najvisa tocka
-struct tocka* findMax(struct tocka *p, int n) { //p = pokazivac, mi cemo ovdje funkciji davati polje, pa p iscezava u pokazivac na prvi element polja
+struct tocka* findMax(struct tocka *p, int n) { //p = pokazivac, mi cemo ovdje funkciji davati polje, pa ono iscezava u pokazivac na prvi element polja
     int i;
     struct tocka *max; //max je pokazivac tipa struct tocka
 
