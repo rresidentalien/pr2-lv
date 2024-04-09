@@ -34,6 +34,7 @@ int main() {
         fprintf(out, "\n");
         printf("\n");
     }
+    fclose(in);
     fclose(out);
 
     return 0;
