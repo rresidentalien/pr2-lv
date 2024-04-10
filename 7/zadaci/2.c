@@ -26,8 +26,8 @@ int main() {
         printf("Datoteka se ne moze otvoriti.\n");
         return 1;
     }
-    for (i = 1; i < m; ++i) {
-        for (j = 0; j < n-1; ++j) {
+    for (i = 0; i < m-1; ++i) {
+        for (j = 1; j < n; ++j) {
             fprintf(out, "%.2f\t", matrica[i][j]);
             printf("%.2f\t", matrica[i][j]);
         }
