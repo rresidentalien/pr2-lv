@@ -1,5 +1,8 @@
 #include <stdio.h>
 
+//int rename(const char *oldname, const char *newname);
+//prima dva parametra, staro ime i novo ime; mijenja ime datoteke na disku
+
 int main() {
     FILE* fp = NULL;
     char* staro_ime = "Programiranje 1.txt";

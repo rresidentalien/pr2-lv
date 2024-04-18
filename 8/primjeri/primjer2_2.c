@@ -1,5 +1,8 @@
 #include <stdio.h>
 
+//int remove(const char* ime_datoteke);
+//brise datoteku; vraca 0 ako je datoteka uspjesno obrisana, -1 ako nije
+
 int main() {
     FILE* fp = NULL;
     char* ime_datoteke = "Programiranje 1.txt";
