@@ -1,8 +1,5 @@
 #include <stdio.h>
 
-//program koji rjesava labirint u obliku 2D polja gdje su 1 prolazi, a 0 zidovi
-//pronalazi put i vraca sol - 2D polje gdje su 1 prolaz, a svi ostali elementi su 0
-//program je hard-coded da pocinje u gornjem lijevom kutu (0,0), a zavrsava u donjem desnom (3,3)
 //program je isti kao iz primjera 2.1., ali ima dodatnu funkcionalnost ispisa svakog koraka za debugging ili lakse razumijevanje programa (funkcija dbgMazeWithCurrentLocation)
 
 int isSafe(int x, int y) { //provjerava je li x,y validan indeks za labirint - je li 2D polje odgovarajucih dimenzija od 1x1 do 4x4; potrebno da nam funkcija ne "izleti" van matrice
@@ -33,7 +30,7 @@ void dbgMazeWithCurrentLocation(int maze[4][4], int x, int y, int sol[4][4]) { /
             printf("\n");
         }
     }else {
-        printf("Current location: %d %d -- INVALID\n", x,y);
+        printf("Current location: %d %d -- INVALID\n", x,y); //ako unos nije validan ili je vrijednost na poziciji 0
     }
 }
 
