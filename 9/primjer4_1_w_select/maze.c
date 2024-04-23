@@ -7,42 +7,7 @@ int solveMaze(Maze* maze, Maze* sol, int startX, int startY, int endX, int endY)
     return 0;
 }
 
-int solveMazeUntil(Maze* maze, int x, int y, Maze* sol, int endX, int endY) {
-    dbgMazeWithCurrentLocation(maze, x, y, sol);
-    //Exit 1: Check if we have reached the end
-    if( x == endX && y == endY && maze->m[y][x] == 1 ) {
-        sol->m[y][x] = 1;
-        return 1;
-    }
-    //if x,y are valid and safe indices for the maze
-    if( isSafe(maze,x,y) && maze->m[y][x] == 1 ) {
-        //Exit 2: Check if x,y already in our solution path.
-        //Prevents us from getting stuck in an infinite recursion
-        if( sol->m[y][x] == 1 ) {
-            return 0;
-        }
-        //Add x,y to the solution path
-        sol->m[y][x] = 1;
-        //Move down
-        if( solveMazeUntil(maze, x, y+1, sol, endX, endY))
-            return 1;
-        //Move left
-        if( solveMazeUntil(maze, x-1, y, sol, endX, endY))
-            return 1;
-        //Move up
-        if( solveMazeUntil(maze, x, y-1, sol, endX, endY))
-            return 1;
-        //Move right
-        if( solveMazeUntil(maze, x+1, y, sol, endX, endY))
-            return 1;
-        
-        sol->m[y][x] = 0;
-        return 0;
-    }
-    return 0;
-}
-
-void myMazeWriter(Maze* maze, Maze* solution) {
+void myMazeWriter(Maze* maze, Maze* solution) { //ispisuje rjesenje labirinta u datoteku
     int xx,yy;
     FILE *f = fopen(_maze_write_path, "w");
     if( f == NULL )
