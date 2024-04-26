@@ -34,11 +34,12 @@ int main() {
     for (i = 0; i < racun->brojArtikala; ++i) {
         racun->artikli[i].naziv = malloc(100 * sizeof(char));
 
+        fgetc(racuntxt); //pojede znak za novi red nakon broja artikala za i=0 i kolicine za sve ostale, inace naziv artikla bude 10 (line feed) i nista ne valja
         fgets(racun->artikli[i].naziv, 100, racuntxt);
         fscanf(racuntxt, "%f", &racun->artikli[i].cijena);
         fscanf(racuntxt, "%d", &racun->artikli[i].kolicina);
 
-        racun->iznos += racun->artikli->kolicina;
+        racun->iznos += racun->artikli[i].cijena * (float)racun->artikli[i].kolicina;
     }
 
     printf("REZULTATI:\n");
