@@ -27,6 +27,8 @@ int main() {
         }
         ++koraci;
     }
+
+    printf("REZULTATI:\n");
     if (flag)
         printf("Broj %d je pronadjen nakon %d koraka.", n, koraci);
     else
