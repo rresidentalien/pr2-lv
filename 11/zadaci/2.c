@@ -50,8 +50,8 @@ int binarno(int *V, int x) { //polje, trazeni element
         ++binkoraci;
         if (x == V[s]) {
             printf("Broj %d je pronadjen u %d koraka.", x, binkoraci);
-            break;
             return binkoraci;
+            break;
         }
         else if (x>V[s]) {
             dg = s+1;
@@ -60,9 +60,10 @@ int binarno(int *V, int x) { //polje, trazeni element
             gg = s-1;
         }
     }
-    if (dg>gg) 
+    if (dg>gg) {
         printf ("Broj %d nije pronadjen.", x);
         return 0;
+    }
 }
 
 int main() {
@@ -93,11 +94,11 @@ int main() {
     printf("Sekvencijalno:\n");
     for (i = 0; i < 5; ++i) {
         printf("%d. ", i+1);
-        sekvencijalno(polje, n[i]);
+        int koraci = sekvencijalno(polje, n[i]);
         printf("\n");
 
-        if (sekvencijalno(polje, n[i]) > 0) {
-            koraciSek += sekvencijalno(polje, n[i]);
+        if (koraci > 0) {
+            koraciSek += koraci;
             ++uspjesniSek;
         }
     }
@@ -105,17 +106,17 @@ int main() {
     printf("Binarno:\n");
     for (i = 0; i < 5; ++i) {
         printf("%d. ", i+1);
-        binarno(polje, n[i]);
+        int koraci = binarno(polje, n[i]);
         printf("\n");
 
-        if (binarno(polje, n[i]) > 0) {
-            koraciBin += binarno(polje, n[i]);
+        if (koraci > 0) {
+            koraciBin += koraci;
             ++uspjesniBin;
         }
     }
 
-    printf("\nSrednji broj koraka za sekvencijalno pretrazivanje je: %d", koraciBin/uspjesniBin);
-    printf("\nSrednji broj koraka za binarno pretrazivanje je: %d", koraciSek/uspjesniSek);
+    printf("\nSrednji broj koraka za sekvencijalno pretrazivanje je: %d", koraciSek/uspjesniSek);
+    printf("\nSrednji broj koraka za binarno pretrazivanje je: %d", koraciBin/uspjesniBin);
 
     fclose(f);
     return 0;
