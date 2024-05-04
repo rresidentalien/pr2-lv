@@ -17,7 +17,7 @@ int *bubble_sort(int *numbers, int count, int (*cmp)(int,int)) {
 
     for(i = 0; i < count; i++) {
         for(j = 0; j < count - 1; j++) {
-            if(cmp(target[j], target[j+1]) > 0) { //ako je trenutni clan veci od sljedeceg (sorted_order) / ako je sljedeci clan veci od trenutnog (reverse_order)
+            if(cmp(target[j], target[j+1]) > 0) { //ako je trenutni clan veci od sljedeceg (sorted_order) / ako je sljedeci clan veci od trenutnog (reverse_order), zamijenit ce mjesta
                 temp = target[j+1]; //zamjena znakova
                 target[j+1] = target[j];
                 target[j] = temp;
@@ -27,11 +27,11 @@ int *bubble_sort(int *numbers, int count, int (*cmp)(int,int)) {
     return target;
 }
 
-int sorted_order(int a, int b) {
+int sorted_order(int a, int b) { //ako je a veci od b, vraca pozitivan broj
     return a - b;
 }
 
-int reverse_order(int a, int b) {
+int reverse_order(int a, int b) { //ako je b veci od a, vraca pozitivan broj
     return b - a;
 }
 
