@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #define indeks(s, dg, gg) s = (dg+gg)/2
 
 void swap (int *x, int *y) {
