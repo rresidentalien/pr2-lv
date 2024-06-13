@@ -23,7 +23,7 @@ int main() {
         scanf("%d", &stan[i].cijena);
         
         printf("Unesite adresu: ");
-        scanf("%s", stan[i].adresa);
+        scanf(" %[^\n]s", stan[i].adresa);
         
         printf("Unesite energetski razred: ");
         scanf(" %c", &stan[i].razred);
